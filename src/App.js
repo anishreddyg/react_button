@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Child from "./Child";
 import "./styles.css";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 
 export default function App() {
+  const buttonEl = useRef(null);
   const [count, setCount] = useState(2);
   const [vClass, setVClass] = useState("danger");
 
@@ -13,13 +14,13 @@ export default function App() {
       setVClass("primary");
     }
   }, []);
-  const changeHandler = (e) => {
-    console.log(e);
+  const changeHandler = () => {
+    console.log(buttonEl);
   };
   return (
     <React.Fragment>
-      <Button variant={vClass} onClick={(e) => changeHandler(e)}>
-        Profile <Badge bg="secondary">9</Badge>
+      <Button ref={buttonEl} variant={vClass} onClick={() => changeHandler()}>
+        Parent <Badge bg="secondary">9</Badge>
       </Button>
       <Child buttonData={changeHandler} />
     </React.Fragment>

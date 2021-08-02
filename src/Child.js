@@ -2,14 +2,9 @@ import React from "react";
 const Child = (props) => {
   console.log(props);
 
-  const passData = (e) => {
-    console.log(e);
-    props.buttonData(e);
-  };
-
   return (
     <React.Fragment>
-      <button onClick={(e) => passData(e)}>Child</button>
+      <button onClick={() => props.buttonData()}>Child</button>
     </React.Fragment>
   );
 };
